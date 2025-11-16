@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tracker Programmazione</title>
+  <link rel="stylesheet" href="programming.css">
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+
+  <div class="header">
+    <h1>💻 Tracker Programmazione</h1>
+    <button class="btn-home" onclick="tornaAllaHome()">← Home</button>
+  </div>
+
+  <div class="container">
+
+    <!-- WEEKLY PROGRESS -->
+    <div class="card">
+      <h2>📊 Progresso Settimanale</h2>
+      <div class="progress-container">
+        <div class="progress-stat">
+          <div class="stat-number" id="hours-this-week">0</div>
+          <div class="stat-label">Ore questa settimana</div>
+          <div class="stat-target">Target: 7.5h</div>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
+        </div>
+        <div class="time-entries" id="time-entries">
+          <!-- Time entries will be added here by JavaScript -->
+        </div>
+        <button class="btn-primary" onclick="addTimeEntry()">+ Aggiungi Sessione</button>
+      </div>
+    </div>
+
+    <!-- CURRENT PROJECTS -->
+    <div class="card">
+      <h2>🚀 Progetti in Corso</h2>
+      <div id="projects-list">
+        <div class="project-item">
+          <input type="checkbox" id="project1" onchange="saveProjects()">
+          <label for="project1">
+            <strong>Web App B.J.</strong> - Sistema di schedulazione personale
+          </label>
+        </div>
+        <div class="project-item">
+          <input type="checkbox" id="project2" onchange="saveProjects()">
+          <label for="project2">
+            <strong>Corso JavaScript</strong> - Completare moduli 1-5
+          </label>
+        </div>
+        <div class="project-item">
+          <input type="checkbox" id="project3" onchange="saveProjects()">
+          <label for="project3">
+            <strong>Algoritmi</strong> - Studiare sorting e searching
+          </label>
+        </div>
+      </div>
+      <button class="btn-secondary" onclick="addProject()">+ Nuovo Progetto</button>
+    </div>
+
+    <!-- SKILLS TO LEARN -->
+    <div class="card">
+      <h2>🎯 Skills da Imparare</h2>
+      <div class="skills-grid">
+        <div class="skill-card html">
+          <div class="skill-icon">HTML</div>
+          <div class="skill-level">
+            <div class="level-bar">
+              <div class="level-fill" style="width: 70%"></div>
+            </div>
+            <div class="level-text">70%</div>
+          </div>
+        </div>
+        <div class="skill-card css">
+          <div class="skill-icon">CSS</div>
+          <div class="skill-level">
+            <div class="level-bar">
+              <div class="level-fill" style="width: 60%"></div>
+            </div>
+            <div class="level-text">60%</div>
+          </div>
+        </div>
+        <div class="skill-card js">
+          <div class="skill-icon">JavaScript</div>
+          <div class="skill-level">
+            <div class="level-bar">
+              <div class="level-fill" style="width: 50%"></div>
+            </div>
+            <div class="level-text">50%</div>
+          </div>
+        </div>
+        <div class="skill-card react">
+          <div class="skill-icon">React</div>
+          <div class="skill-level">
+            <div class="level-bar">
+              <div class="level-fill" style="width: 20%"></div>
+            </div>
+            <div class="level-text">20%</div>
+          </div>
+        </div>
+        <div class="skill-card python">
+          <div class="skill-icon">Python</div>
+          <div class="skill-level">
+            <div class="level-bar">
+              <div class="level-fill" style="width: 30%"></div>
+            </div>
+            <div class="level-text">30%</div>
+          </div>
+        </div>
+        <div class="skill-card git">
+          <div class="skill-icon">Git</div>
+          <div class="skill-level">
+            <div class="level-bar">
+              <div class="level-fill" style="width: 40%"></div>
+            </div>
+            <div class="level-text">40%</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- LEARNING RESOURCES -->
+    <div class="card">
+      <h2>📚 Risorse di Studio</h2>
+      <div class="resources-list">
+        <a href="https://www.youtube.com/watch?v=G3e-cpL7ofc" target="_blank" class="resource-item">
+          <span class="resource-icon">📺</span>
+          <span class="resource-title">HTML Full Course - YouTube</span>
+        </a>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" class="resource-item">
+          <span class="resource-icon">📖</span>
+          <span class="resource-title">MDN JavaScript Docs</span>
+        </a>
+        <a href="https://www.freecodecamp.org/" target="_blank" class="resource-item">
+          <span class="resource-icon">💡</span>
+          <span class="resource-title">FreeCodeCamp</span>
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- MODAL FOR ADDING TIME ENTRY -->
+  <div id="timeModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeTimeModal()">&times;</span>
+      <h3>Aggiungi Sessione di Studio</h3>
+      <form onsubmit="saveTimeEntry(event)">
+        <label>Data:</label>
+        <input type="date" id="session-date" required>
+
+        <label>Ore:</label>
+        <input type="number" id="session-hours" min="0.1" max="12" step="0.1" required>
+
+        <label>Argomento:</label>
+        <input type="text" id="session-topic" placeholder="es. JavaScript Arrays" required>
+
+        <button type="submit" class="btn-primary">Salva</button>
+      </form>
+    </div>
+  </div>
+
+</body>
+
+</html>

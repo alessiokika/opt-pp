@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To-Do List</title>
+  <link rel="stylesheet" href="todo.css">
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+
+  <div class="header">
+    <h1>✅ To-Do List con Time-Boxing</h1>
+    <button class="btn-home" onclick="tornaAllaHome()">← Home</button>
+  </div>
+
+  <div class="container">
+
+    <!-- ADD TASK FORM -->
+    <div class="card add-task-card">
+      <h2>Aggiungi Nuovo Task</h2>
+      <form id="add-task-form" onsubmit="addTask(event)">
+        <div class="form-row">
+          <input type="text" id="task-title" placeholder="Nome del task" required>
+          <select id="task-priority" required>
+            <option value="">Priorità</option>
+            <option value="urgent-important">🔴 Urgente & Importante</option>
+            <option value="not-urgent-important">🟡 Non Urgente & Importante</option>
+            <option value="urgent-not-important">🟠 Urgente & Non Importante</option>
+            <option value="not-urgent-not-important">🟢 Non Urgente & Non Importante</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <input type="number" id="task-duration" placeholder="Durata stimata (min)" min="5" step="5" required>
+          <input type="date" id="task-deadline">
+        </div>
+        <button type="submit" class="btn-primary">+ Aggiungi Task</button>
+      </form>
+    </div>
+
+    <!-- EISENHOWER MATRIX -->
+    <div class="matrix-container">
+      <div class="matrix-header">
+        <h2>📊 Matrice di Eisenhower</h2>
+        <p class="matrix-description">Organizza i task per urgenza e importanza</p>
+      </div>
+
+      <div class="matrix-grid">
+        <!-- Q1: Urgent & Important -->
+        <div class="matrix-quadrant urgent-important">
+          <div class="quadrant-header">
+            <h3>🔴 Urgente & Importante</h3>
+            <p>Fai subito!</p>
+          </div>
+          <div class="tasks-list" id="tasks-urgent-important">
+            <!-- Tasks will be added here -->
+          </div>
+        </div>
+
+        <!-- Q2: Not Urgent & Important -->
+        <div class="matrix-quadrant not-urgent-important">
+          <div class="quadrant-header">
+            <h3>🟡 Non Urgente & Importante</h3>
+            <p>Pianifica</p>
+          </div>
+          <div class="tasks-list" id="tasks-not-urgent-important">
+            <!-- Tasks will be added here -->
+          </div>
+        </div>
+
+        <!-- Q3: Urgent & Not Important -->
+        <div class="matrix-quadrant urgent-not-important">
+          <div class="quadrant-header">
+            <h3>🟠 Urgente & Non Importante</h3>
+            <p>Delega se possibile</p>
+          </div>
+          <div class="tasks-list" id="tasks-urgent-not-important">
+            <!-- Tasks will be added here -->
+          </div>
+        </div>
+
+        <!-- Q4: Not Urgent & Not Important -->
+        <div class="matrix-quadrant not-urgent-not-important">
+          <div class="quadrant-header">
+            <h3>🟢 Non Urgente & Non Importante</h3>
+            <p>Elimina/Rinvia</p>
+          </div>
+          <div class="tasks-list" id="tasks-not-urgent-not-important">
+            <!-- Tasks will be added here -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TODAY'S TIME-BOXED SCHEDULE -->
+    <div class="card">
+      <h2>⏱️ Time-Box di Oggi</h2>
+      <div class="timebox-info">
+        <p>Tempo disponibile oggi: <strong id="available-time">0</strong> minuti</p>
+        <p>Tempo allocato: <strong id="allocated-time">0</strong> minuti</p>
+        <p>Tempo libero: <strong id="free-time">0</strong> minuti</p>
+      </div>
+      <div id="today-tasks" class="today-tasks-list">
+        <!-- Today's tasks will appear here -->
+      </div>
+    </div>
+
+    <!-- COMPLETED TASKS -->
+    <div class="card">
+      <h2>✓ Task Completati Oggi</h2>
+      <div id="completed-tasks" class="completed-tasks-list">
+        <p class="empty-state">Nessun task completato ancora</p>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+
+</html>

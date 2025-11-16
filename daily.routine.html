@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daily Routine Ottimizzata</title>
+  <link rel="stylesheet" href="daily.routine.css">
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+
+  <div class="header">
+    <h1>📅 Daily Routine Ottimizzata</h1>
+    <button class="btn-home" onclick="tornaAllaHome()">← Home</button>
+  </div>
+
+  <div class="day-selector">
+    <button class="day-btn active" onclick="showDay('lun')">LUN</button>
+    <button class="day-btn" onclick="showDay('mar')">MAR</button>
+    <button class="day-btn" onclick="showDay('mer')">MER</button>
+    <button class="day-btn" onclick="showDay('gio')">GIO</button>
+    <button class="day-btn" onclick="showDay('ven')">VEN</button>
+    <button class="day-btn" onclick="showDay('sab')">SAB</button>
+    <button class="day-btn" onclick="showDay('dom')">DOM</button>
+  </div>
+
+  <div class="schedule-container">
+
+    <!-- MATTINA - TUTTI I GIORNI -->
+    <div class="time-section">
+      <h2>🌅 MATTINA (Tutti i giorni)</h2>
+      <div class="time-block transition">
+        <span class="time">5:50-6:00</span>
+        <span class="activity">Sveglia + bagno</span>
+        <span class="duration">10min</span>
+      </div>
+
+      <div class="time-block programming">
+        <span class="time">6:02-7:02</span>
+        <span class="activity">💻 PROGRAMMAZIONE (Focus Primario)</span>
+        <span class="duration">1h</span>
+        <button class="check-btn" onclick="toggleComplete(this)">✓</button>
+      </div>
+
+      <div class="time-block transition">
+        <span class="time">7:05-7:30</span>
+        <span class="activity">Colazione</span>
+        <span class="duration">25min</span>
+      </div>
+
+      <div class="time-block university">
+        <span class="time">7:32-7:50</span>
+        <span class="activity">📚 Università online</span>
+        <span class="duration">18min</span>
+        <button class="check-btn" onclick="toggleComplete(this)">✓</button>
+      </div>
+
+      <div class="time-block work">
+        <span class="time">8:00-18:00</span>
+        <span class="activity">💼 LAVORO</span>
+        <span class="duration">9h + spostamenti</span>
+      </div>
+    </div>
+
+    <!-- SERA - LUN/MAR/VEN (CON PALESTRA) -->
+    <div class="schedule-gym" data-days="lun,mar,ven">
+      <div class="time-section">
+        <h2>🌆 SERA (Lun/Mar/Ven - Con Palestra)</h2>
+
+        <div class="time-block transition">
+          <span class="time">18:10-18:25</span>
+          <span class="activity">Cambio + merenda</span>
+          <span class="duration">15min</span>
+        </div>
+
+        <div class="time-block transition">
+          <span class="time">18:25-18:35</span>
+          <span class="activity">→ Spostamento palestra</span>
+          <span class="duration">10min</span>
+        </div>
+
+        <div class="time-block gym">
+          <span class="time">18:35-19:35</span>
+          <span class="activity">💪 PALESTRA</span>
+          <span class="duration">1h</span>
+          <button class="check-btn" onclick="toggleComplete(this)">✓</button>
+        </div>
+
+        <div class="time-block transition">
+          <span class="time">19:35-19:50</span>
+          <span class="activity">Ritorno + doccia</span>
+          <span class="duration">15min</span>
+        </div>
+
+        <div class="time-block transition">
+          <span class="time">19:50-20:20</span>
+          <span class="activity">Cena</span>
+          <span class="duration">30min</span>
+        </div>
+
+        <div class="time-block university">
+          <span class="time">20:22-20:52</span>
+          <span class="activity">📚 Università</span>
+          <span class="duration">30min</span>
+          <button class="check-btn" onclick="toggleComplete(this)">✓</button>
+        </div>
+
+        <div class="time-block programming">
+          <span class="time">20:52-21:00</span>
+          <span class="activity">💻 Review programmazione</span>
+          <span class="duration">8min</span>
+          <button class="check-btn" onclick="toggleComplete(this)">✓</button>
+        </div>
+
+        <div class="time-block free">
+          <span class="time">21:00-22:30</span>
+          <span class="activity">Relax / Tempo libero</span>
+          <span class="duration">1h30</span>
+        </div>
+
+        <div class="time-block sleep">
+          <span class="time">22:30</span>
+          <span class="activity">😴 Dormire</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- SERA - MER/GIO/SAB/DOM (CON GF) -->
+    <div class="schedule-gf" data-days="mer,gio,sab,dom">
+      <div class="time-section">
+        <h2>🌆 SERA (Mer/Gio/Sab/Dom - Con GF)</h2>
+
+        <div class="time-block transition">
+          <span class="time">18:10-18:40</span>
+          <span class="activity">Cena veloce</span>
+          <span class="duration">30min</span>
+        </div>
+
+        <div class="time-block university">
+          <span class="time">18:42-19:27</span>
+          <span class="activity">📚 Università</span>
+          <span class="duration">45min</span>
+          <button class="check-btn" onclick="toggleComplete(this)">✓</button>
+        </div>
+
+        <div class="time-block gf">
+          <span class="time">19:30-22:00</span>
+          <span class="activity">❤️ GF</span>
+          <span class="duration">2h30</span>
+        </div>
+
+        <div class="time-block transition">
+          <span class="time">22:00-22:30</span>
+          <span class="activity">Preparazione notte</span>
+          <span class="duration">30min</span>
+        </div>
+
+        <div class="time-block sleep">
+          <span class="time">22:30</span>
+          <span class="activity">😴 Dormire</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- STATS SETTIMANALI -->
+  <div class="stats-container">
+    <h2>📊 Totali Settimanali</h2>
+    <div class="stats-grid">
+      <div class="stat-card programming">
+        <div class="stat-icon">💻</div>
+        <div class="stat-label">Programmazione</div>
+        <div class="stat-value">~7h30</div>
+        <div class="stat-subtitle">Focus Primario</div>
+      </div>
+      <div class="stat-card university">
+        <div class="stat-icon">📚</div>
+        <div class="stat-label">Università</div>
+        <div class="stat-value">~6h40</div>
+        <div class="stat-subtitle">Online</div>
+      </div>
+      <div class="stat-card gym">
+        <div class="stat-icon">💪</div>
+        <div class="stat-label">Palestra</div>
+        <div class="stat-value">3h</div>
+        <div class="stat-subtitle">Lun/Mar/Ven</div>
+      </div>
+      <div class="stat-card gf">
+        <div class="stat-icon">❤️</div>
+        <div class="stat-label">GF</div>
+        <div class="stat-value">10h</div>
+        <div class="stat-subtitle">Mer/Gio/Sab/Dom</div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
